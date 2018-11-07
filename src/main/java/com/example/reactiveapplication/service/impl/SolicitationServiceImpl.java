@@ -2,9 +2,10 @@ package com.example.reactiveapplication.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.example.reactiveapplication.dao.SolicitationRepository;
 import com.example.reactiveapplication.dao.entity.Solicitation;
+import com.example.reactiveapplication.repository.SolicitationRepository;
 import com.example.reactiveapplication.service.AbstractService;
 import com.example.reactiveapplication.service.SolicitationService;
 
@@ -18,6 +19,7 @@ public class SolicitationServiceImpl extends AbstractService<Solicitation, Strin
 	private SolicitationRepository solicitationRepository;
 
 	@Override
+	@Transactional
 	public Mono<Solicitation> create(Solicitation solicitation) {
 		return this.solicitationRepository.insert(solicitation);
 	}

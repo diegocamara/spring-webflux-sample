@@ -1,4 +1,4 @@
-package com.example.reactiveapplication.dao;
+package com.example.reactiveapplication.repository;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface SolicitationRepository extends ReactiveMongoRepository<Solicitation, String> {
 
-    Flux<Solicitation> findByAuthor(String author);
+	Flux<Solicitation> findByAuthor(String author);
 
-    Flux<Solicitation> findByAuthorAndDeleteIsFalse(String titleKeyword);
+	Flux<Solicitation> findByAuthorAndDeleteIsFalse(String titleKeyword);
 
-    Mono<Solicitation> findByTitle(String title);
+	Mono<Solicitation> findByTitle(String title);
 
-    Mono<Solicitation> findByIdAndDeleteIsFalse(String id);
+	Mono<Solicitation> findByIdAndDeleteIsFalse(String id);
 
 }
